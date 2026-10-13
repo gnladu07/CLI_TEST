@@ -1,0 +1,3 @@
+jwt:
+  # 로컬 개발 전용 키. 공개된 값이므로 local 외 프로필에서 사용하지 않는다.
+  secret: ${JWT_SECRET:local-dev-only-secret-key-change-me-in-production-0123456789}

@@ -71,7 +71,6 @@ def main():
             "-c", 'sandbox_mode="read-only"',
             "review",
             "--uncommitted"
-            "리뷰 결과를 반드시 한국어로 작성하세요."
         ],
         capture_output=True,
         text=True,

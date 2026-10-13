@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: hexagonal-crud
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/testdb
+    username: devuser
+    password: dev1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  # HMAC-SHA 서명 키. 32바이트(256bit) 이상이어야 한다.
+  # JWT_SECRET이 없으면 빈 값이 되어 JwtProperties의 @NotBlank 검증으로 기동에 실패한다.
+  # 해석되지 않은 placeholder 문자열이 그대로 키로 바인딩되지 않도록 빈 기본값을 둔다. 개발용 키는 local 프로필에만 둔다.
+  secret: ${JWT_SECRET:}
+  access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION:30m}
+  # 만료된 무효화(로그아웃) 토큰 기록 정리 주기. 기본값은 매시 정각.
+  revoked-token-cleanup-cron: ${JWT_REVOKED_TOKEN_CLEANUP_CRON:0 0 * * * *}
+
+logging:
+  level:
+    com.example.hexagonal: debug
+    org.hibernate.SQL: debug
